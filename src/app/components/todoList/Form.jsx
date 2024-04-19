@@ -1,15 +1,12 @@
 "use client";
-import React from "react";
+import React,{ useState } from "react";
 import axios from "axios";
-import { useState } from "react";
 import uuid from "react-uuid";
 import { Button } from "@mui/material";
 import useSWR from "swr";
 import { fetcher } from "@/app/swr";
 
 const Form = () => {
-
-
   const [inputText, setInputtext] = useState("");
 
   const { mutate, error } = useSWR(

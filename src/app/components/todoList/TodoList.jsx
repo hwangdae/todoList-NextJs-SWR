@@ -1,8 +1,8 @@
 "use client";
+import React from "react";
 import { fetcher } from "@/app/swr";
 import { Button } from "@mui/material";
 import axios from "axios";
-import React, { useEffect, useState } from "react";
 import useSWR from "swr";
 
 const TodoList = () => {
@@ -10,8 +10,6 @@ const TodoList = () => {
     process.env.NEXT_PUBLIC_URL,
     fetcher
   );
-
-  console.log(todoList)
 
   const todoDelHandler = async(id) => {
     await axios.delete(`${process.env.NEXT_PUBLIC_URL}/${id}`);
