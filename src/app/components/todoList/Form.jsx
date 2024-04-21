@@ -9,19 +9,16 @@ import { fetcher } from "@/app/swr";
 const Form = () => {
   const [inputText, setInputtext] = useState("");
 
-  const { mutate, error } = useSWR(
-    process.env.NEXT_PUBLIC_URL,
-    fetcher
-  );
+  const { mutate, error } = useSWR(process.env.NEXT_PUBLIC_URL,fetcher);
 
-  const addTodoHandler = async(e) => {
-    e.preventDefault()
+  const addTodoHandler = async (e) => {
+    e.preventDefault();
     const newTodo = {
       id: uuid(),
       todo: inputText,
     };
     await axios.post(process.env.NEXT_PUBLIC_URL, newTodo);
-    mutate()
+    mutate();
   };
 
   return (
@@ -34,8 +31,17 @@ const Form = () => {
         value={inputText}
         onChange={(e) => setInputtext(e.target.value)}
       ></input>
-      <Button variant="contained" size="small" onClick={addTodoHandler}>ADD</Button>
-      <Button variant="outlined" size="small" type="button" onClick={() => setInputtext("")}>CLEAR</Button>
+      <Button variant="contained" size="small" onClick={addTodoHandler}>
+        ADD
+      </Button>
+      <Button
+        variant="outlined"
+        size="small"
+        type="button"
+        onClick={() => setInputtext("")}
+      >
+        CLEAR
+      </Button>
     </form>
   );
 };
